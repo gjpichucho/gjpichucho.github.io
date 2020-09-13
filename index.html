@@ -1,0 +1,333 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>CodeLab to Create a CodeLab</title>
+  <link rel="stylesheet"
+    href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="" id="lab01forense " title="SISTEMA VIVOS " environment="web"
+    feedback-link="https://github.com/Mrc0113/codelab-4-codelab">
+
+    <google-codelab-step label="Introducción" duration="2">
+      <p>El análisis digital forense de una manera general, es definido como un proceso metodológico para la recolección
+        y análisis de los datos digitales de un sistema de archivos específico, con fines de argumentación y
+        procesamiento legal. </p>
+      <p>
+        Los elementos utilizados como evidencia dentro del análisis digital forense, a través del tiempo han ido tomando
+        una forma más clara acerca de su utilidad y participación en procesos legales, los datos obtenidos admitidos
+        como evidencia, deben tener el valor suficiente para ayudar en la toma de decisiones del caso.
+      </p>
+      <p>
+        Un análisis se puede realizar bajo dos circunstancias particulares; en todo caso, es necesario tener en cuenta
+        que la respuesta inicial que se dé cuando un sistema es víctima de una vulneración o ataque es de suma
+        importancia para la investigación. Así por ejemplo cuando un sistema es víctima de un ataque, una de las
+        primeras opciones por las que se inclina el administrador del sistema es desconectar y apagar los equipos que
+        están siendo afectados; apagar el sistema que se analizará puede afectar evidencia crítica, únicamente los
+        sistemas basados en UNIX pueden recuperar la información que se encontraba en el archivo de intercambio SWAP.
+      </p>
+      <p>
+        En sistemas tipo Windows o Linux esta función no está disponible; además, los atacantes pueden correr algún tipo
+        de malware que solo se ejecuta en memoria RAM, después de apagar el sistema se borrará la evidencia, así señor
+        investigador una de sus decisiones críticas consiste en decidir qué pasos seguir cuando es víctima de un ataque.
+      </p>
+      <!-- <ol type="1">
+        <li>Using a Google Doc</li>
+        <li>Using a markdown file</li>
+      </ol>
+      <p>In this codelab we are going to use the second option and author our codelab using a markdown file. This gives
+        us the flexibility of using our markdown file for other things and also storing it in our github repo with any
+        code that might be used for a tutorial.</p>
+      <p>Here is an example image of another CodeLab that I created:<br><img alt="image_caption"
+          src="img/e2500cc24e07c73f.png"></p>
+      <p><strong>Resources:</strong></p>
+      <ul>
+        <li>This codelab&#39;s original home is located here: <a href="https://www.marcd.dev/codelab-4-codelab"
+            target="_blank">Link to Codelab</a></li>
+        <li>The markdown for the original codelab is located here: <a
+            href="https://github.com/Mrc0113/codelab-4-codelab/blob/master/codelab.md" target="_blank">codelab.md</a>
+        </li>
+        <li><a href="https://github.com/googlecodelabs/tools" target="_blank">Google CodeLabs Tools Github</a> - The
+          repo that contains the claat tool we&#39;ll be using today</li>
+        <li><a href="https://groups.google.com/forum/#!forum/codelab-authors" target="_blank">Google Group for CodeLab
+            Authors</a> - great forum for asking questions about codelabs and discussing future functionality</li>
+        <li><a
+            href="https://medium.com/@mariopce/tutorial-how-to-make-tutorials-using-google-code-labs-gangdam-style-d62b35476816"
+            target="_blank">A blog that I used when getting started with Google Codelabs</a></li>
+      </ul> -->
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Marco Teórico" duration="4">
+      <h3 is-upgraded>Sistemas vivos</h3>
+      <p>Un sistema vivo: es aquel que se encuentra en estado de ejecución manteniendo todas sus conexiones y procesos
+        activos. Mientras se pueda mantener “vivo” el sistema es importante recopilar toda la evidencia posible
+        siguiendo un orden de volatilidad, como el especificado en el RFC3227 “Directrices para la recolección de
+        evidencias y su almacenamiento”.
+        De acuerdo al tiempo de disponibilidad de la información con respecto a la volatilidad se puede mencionar el
+        siguiente orden:
+      </p>
+      <ul>
+        <li>Registros y contenido de la memoria caché.</li>
+        <li>Tabla de enrutamiento, caché ARP, tabla de procesos, estadísticas del kernel, memoria.</li>
+        <li>Información temporal del sistema.</li>
+        <li>Disco</li>
+        <li>Logs del sistema.</li>
+        <li>Configuración física y topología de la red.</li>
+        <li>Documentos</li>
+      </ul>
+      <p>
+        Como se pueden observar los lugares donde se puede obtener información de un sistema “vivo” son varios, es por
+        esto que en ocasiones no se puede terminar de recopilar toda la información, pero en el caso que sea posible, el
+        RFC3227 menciona acciones que deben evitarse como son:
+      </p>
+      <ul>
+        <li>No apagar el computador hasta que se haya recopilado toda la información necesaria.</li>
+        <li>No se debe confiar en información generada por programas que se hayan visto comprometidos en un incidente,
+          en razón de que estos pueden haber sido alterados. Para realizar este tipo de recolección se deben utilizar
+          herramientas externas</li>
+        <li>La fecha y hora de algún suceso es importante para una investigación, motivo por el cual al momento de
+          realizar la recolección de evidencias no se deben ejecutar programas que alteren estos parámetros.</li>
+      </ul>
+      <p>Para el análisis en vivo, se conoce también como “en caliente” se hace sobre un sistema del que se presume ha
+        sufrido o está sufriendo un ataque o incidente de seguridad. Para hacer este análisis se recomienda el uso de
+        herramientas o medios que no afecten la integridad del sistema, en el caso de sistemas Windows que no incorporen
+        cambios o se inscriban en el registro, así siempre será aconsejable usar herramientas que se ejecutan en modo
+        autoejecutable y desde unidades extraíbles, así se recomienda usar distribuciones como Kali Linux.
+        Se analiza básicamente: procesos, ficheros, memoria, entre otros.
+      </p>
+
+<!-- 
+      <p>The instructions below are what worked for me on Mac, but you can also find instructions <a
+          href="https://github.com/googlecodelabs/tools/tree/master/claat" target="_blank">here</a></p>
+      <h3 is-upgraded>Install Go</h3>
+      <p>Install <a href="https://golang.org/dl/" target="_blank">Go</a> if you don&#39;t have it.<br>You can use
+        Homebrew if you have it on mac</p>
+      <pre><code>$ brew install go
+</code></pre>
+      <h3 is-upgraded>Setup Go Environment Variables</h3>
+      <p>Below is what I set on mac, but instructions are <a href="https://golang.org/doc/install"
+          target="_blank">here</a> for other OS options</p>
+      <pre><code>$ export GOPATH=$HOME/Go
+$ export GOROOT=/usr/local/opt/go/libexec
+$ export PATH=$PATH:$GOPATH/bin
+$ export PATH=$PATH:$GOROOT/bin
+</code></pre>
+      <h3 is-upgraded>Install claat</h3>
+      <p>Install claat</p>
+      <pre><code>$ go get -u -v -x github.com/googlecodelabs/tools/claat
+</code></pre>
+      <p>You should now have the <em>claat</em> command available to you.</p>
+      <pre><code>$ claat
+</code></pre> -->
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Herramienta de Análisis" duration="5">
+      <h3 is-upgraded>Win–UFO (Ultimate Forensics Outflow)</h3>
+      
+      <p>Es una herramienta para análisis forense de sistemas Windows de las llamadas de “botón gordo”. No necesita configurar nada en el ordenador que se quiere analizar y se puede ejecutar desde una unidad temporal (el clásico disco USB). Por supuesto necesita que el ordenador esté funcionando y con una sesión iniciada.</p>
+      <p>En realidad, es un conjunto de herramientas ya conocidas que están integradas en un lanzador que se encarga de su ejecución.</p>
+      <p>Win-UFO tiene dos funciones básicas:</p>
+      <ol>
+        <li>Crear, de forma automática, un reporte básico del sistema con la información más relevante (usuarios activos en el sistema, procesos en ejecución, contenidos de la papelera de reciclaje, últimos ficheros abiertos, etc.).</li>
+        <li>Dar acceso a herramientas de análisis forense en modo interactivo.</li>
+      </ol>
+      <h4> <strong> Reporte del sistema</strong></h4>
+      <p>Simplemente, hay que arrancar Win-UFO y el programa te ofrece esta posibilidad</p>
+      <br>
+      <img src="./img/Herramienta 1.jpg" alt="1">
+      <p>
+        El reporte se guarda en la misma unidad en la que está instalado el programa (ya hemos dicho que, normalmente, sería un disco USB) por lo que es importante que la unidad tenga espacio para guardar el informe y los ficheros adjuntos (ficheros de registro, configuración, logs, etc.). En el sistema donde lo he probado el reporte ocupa 300MB.
+      </p>
+      <h4> <strong>Herramientas interactivas</strong></h4>
+      <p>
+        Las herramientas se organizan en pestañas y, dentro de cada pestaña, son accesibles con «botones gordos». Hay herramientas de todo tipo, aunque las más útiles, desde mi punto de vista, son:
+      </p>
+      <ol>
+        <li>BROWSER HISTORY: permite extraer información forense de los navegadores instalados (IE, Firefox, Chrome, etc.): historial de navegación, descargas, cookies, favoritos, etc.</li>
+        <li>PASSWORD RECOVERY: recupera las contraseñas almacenadas en los diferentes navegadores y otras aplicaciones instaladas. Esto incluye OUTLOOK, clientes de mensajería, etc.</li>
+      </ol>
+      <br>
+      <img src="./img/Herramienta 2.jpg" alt="">
+
+<!-- 
+      <aside class="warning">
+        <p>If you&#39;re using Windows make sure to set your text editor to use UNIX line endings!</p>
+      </aside>
+      <pre><code>$ vim codelab.md
+</code></pre>
+      <h3 is-upgraded>Fill-in the header metadata</h3>
+      <p>Copy and paste the headers below into your markdown file and change the values appropriately.<br>Guidelines are
+        available below the sample headers.</p>
+      <pre><code>author: Author Name
+summary: Summary of your codelab that is human readable
+id: unique-codelab-identifier
+categories: codelab,markdown
+environments: Web
+status: Published
+feedback link: A link where users can go to provide feedback (Maybe the git repo)
+analytics account: Google Analytics ID
+</code></pre>
+      <p>Metadata consists of key-value pairs of the form &#34;key: value&#34;. Keys cannot<br>contain colons, and
+        separate metadata fields must be separated by blank lines.<br>At present, values must all be on one line. All
+        metadata must come before the<br>title. Any arbitrary keys and values may be used; however, only the
+        following<br>will be understood by the renderer:</p>
+      <ul>
+        <li>Summary: A human-readable summary of the codelab. Defaults to blank.</li>
+        <li>Id: An identifier composed of lowercase letters ideally describing the<br>content of the codelab. This field
+          should be unique among<br>codelabs.</li>
+        <li>Categories: A comma-separated list of the topics the codelab covers.</li>
+        <li>Environments: A list of environments the codelab should be discoverable in.<br>Codelabs marked &#34;Web&#34;
+          will be visible at the codelabs index. Codelabs marked<br>&#34;Kiosk&#34; will only be available at codelabs
+          kiosks, which have special<br>equipment attached.</li>
+        <li>Status: The publication status of the codelab. Valid values are:<br><br>
+          <ul>
+            <li>Draft: Codelab is not finished.</li>
+            <li>Published: Codelab is finished and visible.</li>
+            <li>Deprecated: Codelab is considered stale and should not be widely advertised.</li>
+            <li>Hidden: Codelab is not shown in index.</li>
+          </ul>
+        </li>
+        <li>Feedback Link: A link to send users to if they wish to leave feedback on the<br>codelab.</li>
+        <li>Analytics Account: A Google Analytics ID to include with all codelab pages.</li>
+      </ul>
+      <h3 is-upgraded>Add the Title</h3>
+      <p>Next add your title using a single ‘#&#39; character</p>
+      <pre><code># Title of codelab
+</code></pre>
+      <h3 is-upgraded>Add Sections and Durations</h3>
+      <p>Then for each section use Header 2 or ‘##&#39; and specify an optional duration beneath for time remaining
+        calculations<br>Optional section times will be used to automatically total and remaining tutorial times<br>In
+        markdown I&#39;ve found that the time is formatted hh:mm:ss</p>
+      <p>Example</p>
+      <pre><code>## Section 1
+Duration: 0:10:00
+
+## Section 2
+Duration: 0:05:00
+</code></pre> -->
+      
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Caso Práctico" duration="15">
+      <h3 is-upgraded>Instalación</h3>
+      <ol>
+        <li>Se lo descarga desde la siguiente dirección: <a href="https://drive.google.com/file/d/17ECdOM7DrhWCP_nYf2FHz5yFOCP6nxec/view">aqui</a> </li>
+        <li>Se descomprime el zip en un flash USB</li>
+        <img src="./img/Caso Practico/1. DEscompresión.png" alt="descompresion">
+
+        <li>Para ejecutar el programa es necesario abrir el ejecutable Win-UFO.exe</li>
+        <img src="./img/Caso Practico/2.Abrir Ejecutable.png" alt="">
+      </ol>
+      <h3 is-upgraded>Manejo de la herramienta</h3>
+      <ol>
+        <li>	Aceptamos acuerdos de licencia</li>
+        <img src="./img/Caso Practico/3. Acuerdos de licencia.png" alt="">
+        <li>Rellenamos Formulario con los datos de la investigación </li>
+        <img src="./img/Caso Practico/4. Formulario del caso.png" alt="">
+
+        <li>Esperamos a que el software recoja los datos para el análisis forense</li>
+        <img src="./img/Caso Practico/5. Recolección de información.png" alt="">
+        <li>Nos entregara un reporte con toda la información recolectada</li>
+        <img src="./img/Caso Practico/6. Informe General.png" alt="">
+        <li>Al regresar al menú inicio tenemos las opciones que nos brinda este software</li>
+        <img src="./img/Caso Practico/7. Meneu Home.png" alt="">
+        <li>Para revisar los logs seleccionamos la pestaña LOGS VIEWER</li>
+        <img src="./img/Caso Practico/8. Logs Viewer.png" alt="">
+        <li>En nuestra practica revisaremos los logs de los dispositivos USB, al seleccionar la opción nos saldrá la siguiente pantalla con los datos que solicitamos.</li>
+        <img src="./img/Caso Practico/9. Informe Logs Usb.png" alt="">
+        <li>Si queremos observar datos de los navegadores podemos regresar a la pestaña de navegadores y seleccionar la opción que necesitemos para nuestro ejemplo seleccionaremos Firefox, y no muestra los datos caches de Firefox.</li>
+        <img src="./img/Caso Practico/10.Informe cache Firefox.png" alt="">
+        <li>Los reportes del respectivo análisis se encuentran en el flash en la carpeta Reports</li>
+        <img src="./img/Caso Practico/11. Path de informes.png" alt="">
+      </ol>
+
+<!-- 
+      <p>Now that you have an initial codelab defined in your markdown file let&#39;s go ahead and generate the static
+        site content.<br>We can export and serve the content locally using the <code>claat</code> command that we
+        installed earlier.</p>
+      <pre><code>$ claat export codelab.md
+$ claat serve
+</code></pre>
+      <ul>
+        <li>Your browser should have opened (if it doesn&#39;t then try going to localhost:9090 in your browser).</li>
+        <li>Choose the directory that matches your &#34;id&#34; that you put in the headers.</li>
+        <li>Viola! You should have your first codelab!</li>
+      </ul> -->
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Conclusiones" duration="1">
+      <ul>
+        <li>Con la presente práctica se puede llegar a la conclusión que existen varias herramientas que nos sirven para analizar los diferentes logs que nos pueden ser de gran aporte para obtener evidencias</li>
+        <li>El uso de herramientas para la recuperación de archivos borrados puede ser aplicado a entornos virtuales sin problemas, sin embargo, no en todos los casos estos archivos pueden ser recuperados en su totalidad basado en las operaciones realizadas como el caso de sobrescribir datos.</li>
+        <li>Se concluye que la información volátil, es de mucha ayuda para el proceso de la investigación, y para que la evidencia no se contamina requiere de herramientas que en lo posible no realicen cambio alguno, pero sí que nos permita analizar la información relevante para nuestro proceso de forense.</li>
+        <li>La herramienta propuesta, junto con la recolección y análisis de evidencias, conforman un grupo de mejores prácticas las cuales pueden ser aplicadas en casos similares en donde el objetivo sea el estudiar sistemas vivos</li>
+      </ul>
+
+
+    </google-codelab-step>
+
+    <google-codelab-step label="Bibliografía" duration="1">
+      <ul>
+        <li > <a target="blank" href="http://dspace.espoch.edu.ec/bitstream/123456789/6140/1/20T00802.PDF">http://dspace.espoch.edu.ec/bitstream/123456789/6140/1/20T00802.PDF</a> </li>
+        <li> <a target="blank" href="https://www.caine-live.net/page2/page2.html">https://www.caine-live.net/page2/page2.html</a> </li>
+        <li> <a target="blank" href="https://www.tiforense.com.br/download-win-ufo-ultimate-forensics-outflow/">https://www.tiforense.com.br/download-win-ufo-ultimate-forensics-outflow/</a> </li>
+        <li> <a target="blank" href="http://javiertobal.com/win-ufo-hackingforensics-de-boton-gordo-para-windows/">http://javiertobal.com/win-ufo-hackingforensics-de-boton-gordo-para-windows/</a> </li>
+        <li> <a target="blank" href="https://bibdigital.epn.edu.ec/bitstream/15000/16634/1/CD-7260.pdf">https://bibdigital.epn.edu.ec/bitstream/15000/16634/1/CD-7260.pdf</a> </li>
+      </ul>
+
+    </google-codelab-step>
+
+<!-- 
+    <google-codelab-step label="Host Your CodeLab" duration="1">
+      <p>When you ran the <code>claat export</code> command you created the static web content needed to host your
+        codelab.<br>It placed static web content in a directory specified by your unique &#34;id&#34; and you can view
+        it locally by opening the index.html page.</p>
+      <aside class="warning">
+        <p>Note that when you view it locally by opening index.html some of the graphics may not show up (such as
+          access_time, Next, Back), but they work once online.</p>
+      </aside>
+      <p>Now that you have the static content you can host it however you want.<br>One option is pushing it to github
+        and serving it up from Netlify.</p>
+      <p>If you&#39;d like to create your own landing page for codelabs, <a
+          href="https://codelabs.developers.google.com" target="_blank">like this one</a>, there is a tool to do that as
+        well!<br>Check it out here: <a href="https://github.com/googlecodelabs/tools/blob/master/site/README.md"
+          target="_blank">CodeLabs Site</a></p>
+
+
+    </google-codelab-step> -->
+
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+
+</html>
